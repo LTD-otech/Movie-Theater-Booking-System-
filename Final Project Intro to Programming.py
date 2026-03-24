@@ -2,9 +2,9 @@ def PartySize(party_sz) :
     party = []
     
     for i in range(party_sz) :
-        name = str(input(f"Whats your Name # {i+1} : "))  # Asking user for the name of each member in the party/group 
+        name = str(input(f"Whats your Name #{i+1} : "))  # Asking user for the name of each member in the party/group 
         age = int(input(f"How old are you #{i+1}: "))     # Asking user for the age of each member in the party/group 
-        person = (name, age )    # 
+        person = (name, age )    
         party.append(person)
     
     return party
