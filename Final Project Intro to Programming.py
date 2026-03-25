@@ -15,6 +15,8 @@ print ("Joseph and Luka Project final")
 
 print("final project")
 
+print("Luka") 
+
 def main(): 
         while True : 
         
