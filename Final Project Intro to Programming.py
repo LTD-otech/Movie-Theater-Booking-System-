@@ -9,10 +9,11 @@ def PartySize(party_sz) :
     
     return party
 
-# Joseh
-# Joseph and Luka upadte something
-# def 
-#judjjskks
+print ("Joseph and Luka Project final")
+
+print ("Joseph and Luka Project final")
+
+print("final project")
 
 def main(): 
         while True : 
