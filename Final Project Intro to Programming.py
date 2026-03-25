@@ -8,7 +8,8 @@ def PartySize(party_sz) :
         party.append(person)
     
     return party
-        
+
+# Luka
 
 
 def main(): 
