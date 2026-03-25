@@ -10,6 +10,7 @@ def PartySize(party_sz) :
     return party
 
 # Joseh
+# Joseph and Luka
 
 
 def main(): 
