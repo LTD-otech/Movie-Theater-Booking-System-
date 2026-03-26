@@ -9,13 +9,6 @@ def PartySize(party_sz) :
     
     return party
 
-print ("Joseph and Luka Project final")
-
-print ("Joseph and Luka Project final")
-
-print("final project")
-
-print("Luka") 
 
 def main(): 
         while True : 
