@@ -23,7 +23,7 @@ def main():
 def PartySize(party_sz) : 
     party = []
     
-    for i in range(party_sz) :
+    for i in range(party_sz) :   njmk
         name = str(input(f"Whats your Name #{i+1} : "))  # Asking user for the name of each member in the party/group 
         age = int(input(f"How old are you #{i+1}: "))     # Asking user for the age of each member in the party/group 
         person = (name, age )    
