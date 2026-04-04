@@ -9,6 +9,61 @@ def PartySize(party_sz):
         party.append((name, age))
     return party
 
+# MAIN PROGRAM LOOP
+def main():
+
+    while True:   
+
+        seats = create_seating()
+
+        party_sz = int(input("\nHow many people are in your party / group: "))
+        party = PartySize(party_sz)
+
+        bookings = []
+        total_cost = 0
+
+        for person in party:
+            name = person[0]
+            age = person[1]
+
+            print(f"\n{name}, please choose a seat.")
+            seat_number, seat_type = choose_seat(seats)
+            food_name, food_price = choose_food()
+            age_price = get_age_price(age)
+            seat_extra = get_seat_extra(seat_type)
+            person_total = age_price + seat_extra + food_price
+
+            total_cost += person_total
+
+            bookings.append(
+                (name, age, seat_number, seat_type, food_name, food_price,
+                 age_price, seat_extra, person_total)
+            )
+
+        print("\n -------- BOOKING SUMMARY -------- ")
+
+        for booking in bookings:
+            print(
+                f"Name: {booking[0]}, "
+                f"Age: {booking[1]}, "
+                f"Seat: {booking[2]}, "
+                f"Type: {booking[3]}, "
+                f"Food: {booking[4]}, "
+                f"Food Price: ${booking[5]}, "
+                f"Age Price: ${booking[6]}, "
+                f"Seat Extra: ${booking[7]}, "
+                f"Total: ${booking[8]}"
+            )
+
+        print(f"\nFinal Total: ${total_cost}")
+
+        repeat = input("\nWould you like to make another booking? (y/n): ")
+
+        if repeat.lower() != "y":
+            print("Thank you for using the booking system.")
+            break
+
+main()
 
 # Seating
 def create_seating():
@@ -86,58 +141,31 @@ def get_seat_extra(seat_type):
         return 8
     else:
         return 0
+    
+    # Food Bundles
+def choose_food():
+    print("\nFood Bundles Available:")
+    print("0 - No food")
+    print("1 - Popcorn, Drink ($6)")
+    print("2 - Hotdog, Drink ($7)")
+    print("3 - Pizza, Fries, Drink ($9)")
+    
 
+    while True:
+        choice = input("Would you like food? Enter bundle number (0-3): ")
 
-def main():
+        if choice == "1":
+            return "Popcorn, Drink", 6
 
-    while True:   # MAIN PROGRAM LOOP
+        elif choice == "2":
+            return "Hotdog, Drink", 7
 
-        seats = create_seating()
+        elif choice == "3":
+            return "Pizza, Fries, Drink", 9
+        
+        elif choice == "0":
+            return "No food", 0
 
-        party_sz = int(input("\nHow many people are in your party / group: "))
-        party = PartySize(party_sz)
+        else:
+            print("Invalid choice. Try again.")
 
-        bookings = []
-        total_cost = 0
-
-        for person in party:
-            name = person[0]
-            age = person[1]
-
-            print(f"\n{name}, please choose a seat.")
-            seat_number, seat_type = choose_seat(seats)
-
-            age_price = get_age_price(age)
-            seat_extra = get_seat_extra(seat_type)
-            person_total = age_price + seat_extra
-
-            total_cost += person_total
-
-            bookings.append(
-                (name, age, seat_number, seat_type,
-                 age_price, seat_extra, person_total)
-            )
-
-        print("\n -------- BOOKING SUMMARY -------- ")
-
-        for booking in bookings:
-            print(
-                f"Name: {booking[0]}, "
-                f"Age: {booking[1]}, "
-                f"Seat: {booking[2]}, "
-                f"Type: {booking[3]}, "
-                f"Age Price: ${booking[4]}, "
-                f"Seat Extra: ${booking[5]}, "
-                f"Total: ${booking[6]}"
-            )
-
-        print(f"\nFinal Total: ${total_cost}")
-
-        repeat = input("\nWould you like to make another booking? (y/n): ")
-
-        if repeat.lower() != "y":
-            print("Thank you for using the booking system.")
-            break
-
-
-main()
