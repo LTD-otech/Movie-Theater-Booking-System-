@@ -74,20 +74,22 @@ def pickingmovieshowtime():
     showtimes0 = ("11:30am (0)", "4:15pm (1)", "9:15pm (2)")
     showtimes1 = ("1:45pm (0)", "6:45pm (1)", "11:45pm (2)")
 
-
-    print(movies)
-    movie_choice = int(input("\nPick a number 0-5 to select which movie you would like to watch : \n"))
+    while True:
+        print(movies)
+        movie_choice = int(input("\nPick a number 0-5 to select which movie you would like to watch : \n"))
     
-    if movie_choice in range(len(movies)):
-        movie_selected = movies[movie_choice]
-        print("\nYou are watching:", movies[movie_choice])
+        if movie_choice in range(len(movies)):
+            movie_selected = movies[movie_choice]
+            print("\nYou are watching:", movies[movie_choice])
+                   
+            if movie_choice % 2 == 0 : 
+                    showtimes = showtimes0   # Even Index Elements in Movie Tuple will send user to the showtimes0 tuple
+            else: 
+                     showtimes = showtimes1   # ODD Index Elements in Movie Tuple will send user to the showtimes1 tuple
+            break
+        else:
+            print("Invalid movie choice")
 
-        
-        if movie_choice % 2 == 0 : 
-            showtimes = showtimes0   # Even Index Elements in Movie Tuple will send user to the showtimes0 tuple
-        else: 
-            showtimes = showtimes1   # ODD Index Elements in Movie Tuple will send user to the showtimes1 tuple
-    
 
 
             
