@@ -19,6 +19,8 @@ def main():
         party_sz = int(input("\nHow many people are in your party / group: "))
         party = PartySize(party_sz)
 
+        movietime = pickingmovieshowtime()
+        
         bookings = []
         total_cost = 0
 
@@ -63,7 +65,7 @@ def main():
             print("Thank you for using the booking system.")
             break
 
-main()
+
 
 def pickingmovieshowtime():
     movies = ("Spider Man Homecoming (0)", "Star Wars the Last Jedi (1) " , "Avengers Endgame (2)" , "Fast & Furious 6 (3)" , "Scream (4)" , "Zootopia 2 (5)")
@@ -90,7 +92,8 @@ def pickingmovieshowtime():
              print("Your showtime is", showtimes[picking_showtime])
  
     
-        movietime = print("You are watching" , movies[movie_choice] , "at" , showtimes[picking_showtime])
+        movietime = (f"You are watching" , {movies[movie_choice]} , "at" , {showtimes[picking_showtime]} )
+        print (movietime)
         return movietime
         
     else: 
@@ -101,7 +104,7 @@ def pickingmovieshowtime():
     
     
     
-
+# Seating
 def create_seating():
     seats = {
         "A1": {"type": "regular", "status": "available"},
@@ -205,3 +208,4 @@ def choose_food():
         else:
             print("Invalid choice. Try again.")
 
+main()
