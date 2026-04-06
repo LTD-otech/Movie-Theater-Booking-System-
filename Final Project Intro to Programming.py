@@ -48,9 +48,9 @@ def main():
             print(
                 f"Name: {booking[0]}, "
                 f"Age: {booking[1]}, "
-                f"Seat: {booking[2]}, "
-                f"Movie : {booking[3]},"
-                f"Showtime : {booking[4]}",
+                f"Movie: {booking[2]}, "
+                f"Showtime: {booking[3]},"
+                f"Seat: {booking[4]}",
                 f"Type: {booking[5]}, "
                 f"Food: {booking[6]}, "
                 f"Food Price: ${booking[7]}, "
@@ -72,7 +72,7 @@ def main():
 def pickingmovieshowtime():
     movies = ("Spider Man Homecoming (0)", "Star Wars the Last Jedi (1) " , "Avengers Endgame (2)" , "Fast & Furious 6 (3)" , "Scream (4)" , "Zootopia 2 (5)")
     showtimes0 = ("11:30am (0)", "4:15pm (1)", "9:15pm (2)")
-    showtimes1 = ("1:45am (0)", "6:45pm (1)", "11:45pm (2)")
+    showtimes1 = ("1:45pm (0)", "6:45pm (1)", "11:45pm (2)")
 
 
     print(movies)
@@ -97,11 +97,7 @@ def pickingmovieshowtime():
         if picking_showtime in range(len(showtimes)):
             showtime_selected = showtimes[picking_showtime]
             print("\nYour showtime is", showtimes[picking_showtime])
- 
-    
-        movietime = (f"\nYou are watching" , {movies[movie_choice]} , "at" , {showtimes[picking_showtime]} )
-        print (movietime)
-        
+
         
         return movie_selected , showtime_selected
         
