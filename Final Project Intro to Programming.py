@@ -65,7 +65,43 @@ def main():
 
 main()
 
-# Seating
+def pickingmovieshowtime():
+    movies = ("Spider Man Homecoming (0)", "Star Wars the Last Jedi (1) " , "Avengers Endgame (2)" , "Fast & Furious 6 (3)" , "Scream (4)" , "Zootopia 2 (5)")
+    showtimes0 = ("11:30am (0)", "4:15pm (1)", "9:15pm (2)")
+    showtimes1 = ("1:45am (0)", "6:45pm (1)", "11:45pm (2)")
+
+    movie_choice = int(input("Pick a number 0-5 to select which movie you would like to watch : "))
+    
+    if movie_choice in range(len(movies)):
+        print("You are watching:", movies[movie_choice])
+        
+        if movie_choice % 2 == 0 : 
+            showtimes = showtimes0   # Even Index Elements in Movie Tuple will send user to the showtimes0 tuple
+        else: 
+            showtimes = showtimes1   # ODD Index Elements in Movie Tuple will send user to the showtimes1 tuple
+    
+        
+        print("These are the available showtimes for your movie : ", showtimes)
+    
+
+        picking_showtime = int(input("Pick a number 0-2 to select which showtime you would like to watch your movie at :"))
+        
+        if picking_showtime in range(len(showtimes)):
+             print("Your showtime is", showtimes[picking_showtime])
+ 
+    
+        movietime = print("You are watching" , movies[movie_choice] , "at" , showtimes[picking_showtime])
+        return movietime
+        
+    else: 
+        print("Invalid choice. Try again.")
+
+    
+    
+    
+    
+    
+
 def create_seating():
     seats = {
         "A1": {"type": "regular", "status": "available"},
