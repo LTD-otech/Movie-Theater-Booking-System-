@@ -19,7 +19,7 @@ def main():
         party_sz = int(input("\nHow many people are in your party / group: "))
         party = PartySize(party_sz)
 
-        movietime = pickingmovieshowtime()
+        movie_selected , showtime_selected = pickingmovieshowtime()
         
         bookings = []
         total_cost = 0
@@ -38,7 +38,7 @@ def main():
             total_cost += person_total
 
             bookings.append(
-                (name, age, seat_number, seat_type, food_name, food_price,
+                (name, age, movie_selected, showtime_selected, seat_number, seat_type, food_name, food_price,
                  age_price, seat_extra, person_total)
             )
 
@@ -49,12 +49,14 @@ def main():
                 f"Name: {booking[0]}, "
                 f"Age: {booking[1]}, "
                 f"Seat: {booking[2]}, "
-                f"Type: {booking[3]}, "
-                f"Food: {booking[4]}, "
-                f"Food Price: ${booking[5]}, "
-                f"Age Price: ${booking[6]}, "
-                f"Seat Extra: ${booking[7]}, "
-                f"Total: ${booking[8]}"
+                f"Movie : {booking[3]},"
+                f"Showtime : {booking[4]}",
+                f"Type: {booking[5]}, "
+                f"Food: {booking[6]}, "
+                f"Food Price: ${booking[7]}, "
+                f"Age Price: ${booking[8]}, "
+                f"Seat Extra: ${booking[9]}, "
+                f"Total: ${booking[10]}"
             )
 
         print(f"\nFinal Total: ${total_cost}")
@@ -72,10 +74,14 @@ def pickingmovieshowtime():
     showtimes0 = ("11:30am (0)", "4:15pm (1)", "9:15pm (2)")
     showtimes1 = ("1:45am (0)", "6:45pm (1)", "11:45pm (2)")
 
+
+    print(movies)
     movie_choice = int(input("Pick a number 0-5 to select which movie you would like to watch : "))
     
     if movie_choice in range(len(movies)):
+        movie_selected = movies[movie_choice]
         print("You are watching:", movies[movie_choice])
+
         
         if movie_choice % 2 == 0 : 
             showtimes = showtimes0   # Even Index Elements in Movie Tuple will send user to the showtimes0 tuple
@@ -89,19 +95,20 @@ def pickingmovieshowtime():
         picking_showtime = int(input("Pick a number 0-2 to select which showtime you would like to watch your movie at :"))
         
         if picking_showtime in range(len(showtimes)):
-             print("Your showtime is", showtimes[picking_showtime])
+            showtime_selected = showtimes[picking_showtime]
+            print("Your showtime is", showtimes[picking_showtime])
  
     
         movietime = (f"You are watching" , {movies[movie_choice]} , "at" , {showtimes[picking_showtime]} )
         print (movietime)
-        return movietime
         
+        
+        return movie_selected , showtime_selected
+        
+                
     else: 
         print("Invalid choice. Try again.")
 
-    
-    
-    
     
     
 # Seating
