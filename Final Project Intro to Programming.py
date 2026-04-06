@@ -76,11 +76,11 @@ def pickingmovieshowtime():
 
 
     print(movies)
-    movie_choice = int(input("Pick a number 0-5 to select which movie you would like to watch : "))
+    movie_choice = int(input("\nPick a number 0-5 to select which movie you would like to watch : \n"))
     
     if movie_choice in range(len(movies)):
         movie_selected = movies[movie_choice]
-        print("You are watching:", movies[movie_choice])
+        print("\nYou are watching:", movies[movie_choice])
 
         
         if movie_choice % 2 == 0 : 
@@ -89,17 +89,17 @@ def pickingmovieshowtime():
             showtimes = showtimes1   # ODD Index Elements in Movie Tuple will send user to the showtimes1 tuple
     
         
-        print("These are the available showtimes for your movie : ", showtimes)
+        print("\nThese are the available showtimes for your movie : ", showtimes)
     
 
-        picking_showtime = int(input("Pick a number 0-2 to select which showtime you would like to watch your movie at :"))
+        picking_showtime = int(input("\nPick a number 0-2 to select which showtime you would like to watch your movie at :"))
         
         if picking_showtime in range(len(showtimes)):
             showtime_selected = showtimes[picking_showtime]
-            print("Your showtime is", showtimes[picking_showtime])
+            print("\nYour showtime is", showtimes[picking_showtime])
  
     
-        movietime = (f"You are watching" , {movies[movie_choice]} , "at" , {showtimes[picking_showtime]} )
+        movietime = (f"\nYou are watching" , {movies[movie_choice]} , "at" , {showtimes[picking_showtime]} )
         print (movietime)
         
         
