@@ -1,5 +1,7 @@
 
-# Party size
+# PARTY INFORMATION 
+# This function collects the name and age for each person in the group/party
+
 def PartySize(party_sz):
     party = []
     for i in range(party_sz):
@@ -23,6 +25,8 @@ def PartySize(party_sz):
     return party
 
 # MAIN PROGRAM LOOP
+
+
 def main():
     all_show_seats = {}
     while True:   
@@ -63,10 +67,13 @@ def main():
                 food_name, food_price = choose_food()
                 age_price = get_age_price(age)
                 seat_extra = get_seat_extra(seat_type)
+                
+                # Calculating the total per person
                 person_total = age_price + seat_extra + food_price
 
                 total_cost += person_total
 
+                # Store booking details for booking summary at the end
                 bookings.append(
                     (name, age, movie_selected, showtime_selected, seat_number, seat_type, food_name, food_price,
                     age_price, seat_extra, person_total)
@@ -97,11 +104,13 @@ def main():
                 print("Thank you for using the booking system.")
                 break
 
+# Movie and Showtime Selection 
+# This function ask the user which Movie they want to watch and also which showtime they want to watch that movie at
 
 def pickingmovieshowtime():
-    movies = ("Spider Man Homecoming (0)", "Star Wars the Last Jedi (1) " , "Avengers Endgame (2)" , "Fast & Furious 6 (3)" , "Scream (4)" , "Zootopia 2 (5)")
-    showtimes0 = ("11:30am (0)", "4:15pm (1)", "9:15pm (2)")
-    showtimes1 = ("1:45pm (0)", "6:45pm (1)", "11:45pm (2)")
+    movies = ("Spider Man Homecoming ", "Star Wars the Last Jedi  " , "Avengers Endgame " , "Fast & Furious 6 " , "Scream " , "Zootopia 2 ")
+    showtimes0 = ("11:30am ", "4:15pm ", "9:15pm ")
+    showtimes1 = ("1:45pm ", "6:45pm ", "11:45pm ")
 
     while True:
         print(movies)
@@ -112,9 +121,11 @@ def pickingmovieshowtime():
             print("\nYou are watching:", movies[movie_choice])
                    
             if movie_choice % 2 == 0 : 
-                    showtimes = showtimes0   # Even Index Elements in Movie Tuple will send user to the showtimes0 tuple
+                    showtimes = showtimes0   # Even indexed elements in the movie tuple will use the showtimes0 tuple which will give the user the option to pick showtimes from that tuple only
+                    showtimes = showtimes0   
             else: 
-                     showtimes = showtimes1   # ODD Index Elements in Movie Tuple will send user to the showtimes1 tuple
+                     showtimes = showtimes1  # Odd indexed elements in the movie tuple will use the showtimes0 tuple which will give the user the option to pick showtimes from that tuple only
+            break
             break
         else:
             print("Invalid movie choice")
@@ -129,12 +140,15 @@ def pickingmovieshowtime():
             if picking_showtime in range(len(showtimes)):
                 showtime_selected = showtimes[picking_showtime]
                 print("\nYour showtime is", showtimes[picking_showtime])
-                return movie_selected , showtime_selected
+                return movie_selected , showtime_selected     # # returns both the movie and showtime choices to main
             else:
                 print("Invalid showtime choice.")
          
     
-# Seating
+# Seating Selection 
+# This function creates, displayes and shows if the seat is available or taken 
+
+
 def create_seating():
     seats = {
         "A1": {"type": "regular", "status": "available"},
@@ -183,8 +197,8 @@ def choose_seat(seats):
 
         if seat_choice in seats:
             if seats[seat_choice]["status"] == "available":
-                seats[seat_choice]["status"] = "taken"
-                return seat_choice, seats[seat_choice]["type"]
+                seats[seat_choice]["status"] = "taken"                # This means the seats has been already taken and cannot be chosen by another person again
+                return seat_choice, seats[seat_choice]["type"]       # returns seat number and type of seat 
             else:
                 print("Seat already taken.")
         else:
@@ -194,13 +208,13 @@ def choose_seat(seats):
 # Age Price
 def get_age_price(age):
     if age <= 12:
-        return 8      # child
+        return 8      # child price 
     elif age >= 65:
-        return 10     # senior
+        return 10     # senior price    
     else:
-        return 12     # adult
+        return 12     # adult price
 
-#Seat Extra
+#Seat Type
 def get_seat_extra(seat_type):
     if seat_type == "regular":
         return 0
