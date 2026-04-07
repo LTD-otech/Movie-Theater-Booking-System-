@@ -1,31 +1,4 @@
-
-# PARTY INFORMATION 
-# This function collects the name and age for each person in the group/party
-
-def PartySize(party_sz):
-    party = []
-    for i in range(party_sz):
-        print(f"\nEnter information for person {i + 1}")
-        name = input("Enter name: ")
-
-        while True:
-            try:
-                age = int(input("Enter age: "))
-
-                if age <= 0:
-                    print("Age must be greater than 0. Zero is not allowed.")
-                else:
-                    break
-
-            except ValueError:
-                print("Invalid age. Please enter a valid number.")
-
-        party.append((name, age))
-
-    return party
-
 # MAIN PROGRAM LOOP
-
 
 def main():
     all_show_seats = {}
@@ -103,6 +76,31 @@ def main():
             if repeat.lower() != "y":
                 print("Thank you for using the booking system.")
                 break
+            
+# PARTY INFORMATION 
+# This function collects the name and age for each person in the group/party
+
+def PartySize(party_sz):
+    party = []
+    for i in range(party_sz):
+        print(f"\nEnter information for person {i + 1}")
+        name = input("Enter name: ")
+
+        while True:
+            try:
+                age = int(input("Enter age: "))
+
+                if age <= 0:
+                    print("Age must be greater than 0. Zero is not allowed.")
+                else:
+                    break
+
+            except ValueError:
+                print("Invalid age. Please enter a valid number.")
+
+        party.append((name, age))
+
+    return party
 
 # Movie and Showtime Selection 
 # This function ask the user which Movie they want to watch and also which showtime they want to watch that movie at
