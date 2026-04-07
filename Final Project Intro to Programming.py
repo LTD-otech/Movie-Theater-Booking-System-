@@ -5,8 +5,21 @@ def PartySize(party_sz):
     for i in range(party_sz):
         print(f"\nEnter information for person {i + 1}")
         name = input("Enter name: ")
-        age = int(input("Enter age: "))
+
+        while True:
+            try:
+                age = int(input("Enter age: "))
+
+                if age <= 0:
+                    print("Age must be greater than 0. Zero is not allowed.")
+                else:
+                    break
+
+            except ValueError:
+                print("Invalid age. Please enter a valid number.")
+
         party.append((name, age))
+
     return party
 
 # MAIN PROGRAM LOOP
@@ -14,14 +27,23 @@ def main():
     all_show_seats = {}
     while True:   
 
-        seats = create_seating()
         while True:
+            while True:
+                try:
+                    party_sz = int(input("\nHow many people are in your party / group: "))
 
-            party_sz = int(input("\nHow many people are in your party / group: "))
+                    if party_sz <= 0:
+                        print("Party size must be greater than 0. Zero or less is not allowed.")
+                    else:
+                        break
+
+                except ValueError:
+                    print("Invalid input. Please enter a valid number.")
+
             party = PartySize(party_sz)
 
-            movie_selected , showtime_selected = pickingmovieshowtime()
-            
+            movie_selected, showtime_selected = pickingmovieshowtime()
+
             booking_key = (movie_selected, showtime_selected)
 
             if booking_key not in all_show_seats:
