@@ -139,7 +139,7 @@ def pickingmovieshowtime():
             else: 
                      showtimes = showtimes1  # Odd indexed elements in the movie tuple will use the showtimes0 tuple which will give the user the option to pick showtimes from that tuple only
             break
-            break
+    
         else:
             print("Invalid movie choice")
 
