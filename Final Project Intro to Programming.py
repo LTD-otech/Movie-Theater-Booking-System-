@@ -195,7 +195,7 @@ def choose_seat(seats):
 
         if seat_choice in seats:
             if seats[seat_choice]["status"] == "available":
-                seats[seat_choice]["status"] = "taken"                # This means the seats has been already taken and cannot be chosen by another person again
+                seats[seat_choice]["status"] = "taken"               # This means the seats has been already taken and cannot be chosen by another person again
                 return seat_choice, seats[seat_choice]["type"]       # returns seat number and type of seat 
             else:
                 print("Seat already taken.")
@@ -204,6 +204,7 @@ def choose_seat(seats):
 
 
 # Age Price
+
 def get_age_price(age):
     if age <= 12:
         return 8      # child price 
@@ -212,7 +213,8 @@ def get_age_price(age):
     else:
         return 12     # adult price
 
-#Seat Type
+# Seat Type
+
 def get_seat_extra(seat_type):
     if seat_type == "regular":
         return 0
@@ -223,7 +225,7 @@ def get_seat_extra(seat_type):
     else:
         return 0
     
-    # Food Bundles
+# Food Bundles and Food Prices
 def choose_food():
     print("\nFood Bundles Available:")
     print("0 - No food")
