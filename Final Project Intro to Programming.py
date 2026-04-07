@@ -7,7 +7,7 @@
 # MAIN PROGRAM LOOP
 # This function controls the overall movie booking system
 # It collects party information, allows movie and showtime selection,
-# manages seating, calculates costs, and prints the final booking summary.
+# Manages seating, Calculates costs, and Prints the final booking summary.
 
 def main():
     all_show_seats = {}
@@ -153,7 +153,7 @@ def pickingmovieshowtime():
             if picking_showtime in range(len(showtimes)):
                 showtime_selected = showtimes[picking_showtime]
                 print("\nYour showtime is", showtimes[picking_showtime])
-                return movie_selected , showtime_selected     # # returns both the movie and showtime choices to main
+                return movie_selected , showtime_selected     # returns both the movie and showtime choices to main
             else:
                 print("Invalid showtime choice.")
          
@@ -241,6 +241,7 @@ def get_seat_extra(seat_type):
         return 0
     
 # Food Bundles and Food Prices
+
 def choose_food():
     print("\nFood Bundles Available:")
     print("0 - No food")
