@@ -1,5 +1,7 @@
-# Joseph Njoroge
-# 101024081
+# Final Project by Luka and Joseh
+# Completed 2026-04-06
+# Joseph Njoroge , Student Number : 101024081
+# Luka DLugosz , Student Number : 101041928
 
 
 # MAIN PROGRAM LOOP
