@@ -1,10 +1,18 @@
+# Joseph Njoroge
+# 101024081
+
+
 # MAIN PROGRAM LOOP
+# This function controls the overall movie booking system
+# It collects party information, allows movie and showtime selection,
+# manages seating, calculates costs, and prints the final booking summary.
 
 def main():
     all_show_seats = {}
     while True:   
 
-        while True:
+        while True: # --- PARTY SIZE INPUT ---
+            # This loop ensures the user enters a valid party size
             while True:
                 try:
                     party_sz = int(input("\nHow many people are in your party / group: "))
@@ -17,12 +25,16 @@ def main():
                 except ValueError:
                     print("Invalid input. Please enter a valid number.")
 
+            # Call PartySize function to collect names and ages
             party = PartySize(party_sz)
-
+            
+            # Call function to select movie and showtime
             movie_selected, showtime_selected = pickingmovieshowtime()
-
+            
+            # Create a unique key for movie and showtime
             booking_key = (movie_selected, showtime_selected)
-
+            
+            # If this showtime does not yet have seats, create seating
             if booking_key not in all_show_seats:
                 all_show_seats[booking_key] = create_seating()
 
@@ -34,7 +46,8 @@ def main():
             for person in party:
                 name = person[0]
                 age = person[1]
-
+                
+                #select seat
                 print(f"\n{name}, please choose a seat.")
                 seat_number, seat_type = choose_seat(seats)
                 food_name, food_price = choose_food()
