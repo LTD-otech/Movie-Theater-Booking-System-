@@ -11,62 +11,69 @@ def PartySize(party_sz):
 
 # MAIN PROGRAM LOOP
 def main():
-
+    all_show_seats = {}
     while True:   
 
         seats = create_seating()
+        while True:
 
-        party_sz = int(input("\nHow many people are in your party / group: "))
-        party = PartySize(party_sz)
+            party_sz = int(input("\nHow many people are in your party / group: "))
+            party = PartySize(party_sz)
 
-        movie_selected , showtime_selected = pickingmovieshowtime()
-        
-        bookings = []
-        total_cost = 0
+            movie_selected , showtime_selected = pickingmovieshowtime()
+            
+            booking_key = (movie_selected, showtime_selected)
 
-        for person in party:
-            name = person[0]
-            age = person[1]
+            if booking_key not in all_show_seats:
+                all_show_seats[booking_key] = create_seating()
 
-            print(f"\n{name}, please choose a seat.")
-            seat_number, seat_type = choose_seat(seats)
-            food_name, food_price = choose_food()
-            age_price = get_age_price(age)
-            seat_extra = get_seat_extra(seat_type)
-            person_total = age_price + seat_extra + food_price
+            seats = all_show_seats[booking_key]
+            
+            bookings = []
+            total_cost = 0
 
-            total_cost += person_total
+            for person in party:
+                name = person[0]
+                age = person[1]
 
-            bookings.append(
-                (name, age, movie_selected, showtime_selected, seat_number, seat_type, food_name, food_price,
-                 age_price, seat_extra, person_total)
-            )
+                print(f"\n{name}, please choose a seat.")
+                seat_number, seat_type = choose_seat(seats)
+                food_name, food_price = choose_food()
+                age_price = get_age_price(age)
+                seat_extra = get_seat_extra(seat_type)
+                person_total = age_price + seat_extra + food_price
 
-        print("\n -------- BOOKING SUMMARY -------- ")
+                total_cost += person_total
 
-        for booking in bookings:
-            print(
-                f"Name: {booking[0]}, "
-                f"Age: {booking[1]}, "
-                f"Movie: {booking[2]}, "
-                f"Showtime: {booking[3]},"
-                f"Seat: {booking[4]}",
-                f"Type: {booking[5]}, "
-                f"Food: {booking[6]}, "
-                f"Food Price: ${booking[7]}, "
-                f"Age Price: ${booking[8]}, "
-                f"Seat Extra: ${booking[9]}, "
-                f"Total: ${booking[10]}"
-            )
+                bookings.append(
+                    (name, age, movie_selected, showtime_selected, seat_number, seat_type, food_name, food_price,
+                    age_price, seat_extra, person_total)
+                )
 
-        print(f"\nFinal Total: ${total_cost}")
+            print("\n -------- BOOKING SUMMARY -------- ")
 
-        repeat = input("\nWould you like to make another booking? (y/n): ")
+            for booking in bookings:
+                print(
+                    f"Name: {booking[0]}, "
+                    f"Age: {booking[1]}, "
+                    f"Movie: {booking[2]}, "
+                    f"Showtime: {booking[3]},"
+                    f"Seat: {booking[4]}",
+                    f"Type: {booking[5]}, "
+                    f"Food: {booking[6]}, "
+                    f"Food Price: ${booking[7]}, "
+                    f"Age Price: ${booking[8]}, "
+                    f"Seat Extra: ${booking[9]}, "
+                    f"Total: ${booking[10]}"
+                )
 
-        if repeat.lower() != "y":
-            print("Thank you for using the booking system.")
-            break
+            print(f"\nFinal Total: ${total_cost}")
 
+            repeat = input("\nWould you like to make another booking? (y/n): ")
+
+            if repeat.lower() != "y":
+                print("Thank you for using the booking system.")
+                break
 
 
 def pickingmovieshowtime():
@@ -90,9 +97,7 @@ def pickingmovieshowtime():
         else:
             print("Invalid movie choice")
 
-
-
-            
+           
     while True:
             print("\nThese are the available showtimes for your movie : ", showtimes)
     
@@ -105,10 +110,7 @@ def pickingmovieshowtime():
                 return movie_selected , showtime_selected
             else:
                 print("Invalid showtime choice.")
-        
-        
-
-    
+         
     
 # Seating
 def create_seating():
@@ -176,7 +178,7 @@ def get_age_price(age):
     else:
         return 12     # adult
 
-
+#Seat Extra
 def get_seat_extra(seat_type):
     if seat_type == "regular":
         return 0
