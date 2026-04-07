@@ -90,7 +90,7 @@ def main():
 
             if repeat.lower() != "y":
                 print("Thank you for using the booking system.")
-                break
+                return
             
 # PARTY INFORMATION 
 # This function collects the name and age for each person in the group/party
